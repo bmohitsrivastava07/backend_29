@@ -1,0 +1,1070 @@
+What do you understand by RESTful Web Services?
+
+RESTful web services are services that follow REST architecture. REST stands for Representational State Transfer and uses HTTP protocol (web protocol) for implementation. These services are lightweight, provide maintainability, scalability, support communication among multiple applications that are developed using different programming languages. They provide means of accessing resources present at server required for the client via the web browser by means of request headers, request body, response body, status codes, etc.
+.........................................................
+2. What is a REST Resource?
+
+Every content in the REST architecture is considered a resource. The resource is analogous to the object in the object-oriented programming world. They can either be represented as text files, HTML pages, images, or any other dynamic data.
+
+The REST Server provides access to these resources whereas the REST client consumes (accesses and modifies) these resources. Every resource is identified globally by means of a URI.
+
+3. What is URI?
+uniform resource identifier  is the full form of URI which is used for identifying each resource of the REST architecture. contain url and urn
+
+
+ Uniform Resource Name identifies the resource by means of a name that is both unique and persistent.
+
+Uniform Resource Locator has the information regarding fetching of a resource from its location.
+................................................................
+
+What are the features of RESTful Web Services?
+
+The service is based on the Client-Server model.
+The service uses HTTP Protocol for fetching data/resources, query execution, or any other functions.
+The medium of communication between the client and server is called “Messaging”.
+Resources are accessible to the service by means of URIs.
+It follows the statelessness concept where the client request and response are not dependent on others and thereby provides total assurance of getting the required data.
+These services also use the concept of caching to minimize the server calls for the same type of repeated requests.
+These services can also use SOAP services as implementation protocol to REST architectural pattern.
+......................................................
+What is the concept of statelessness in REST?
+
+The REST architecture is designed in such a way that the client state is not maintained on the server. This is known as statelessness. The context is provided by the client to the server using which the server processes the client’s request. The session on the server is identified by the session identifier sent by the client.
+
+.......................................................
+What are HTTP Status codes?
+These are the standard codes that refer to the predefined status of the task at the server. Following are the status codes formats available:
+
+1xx - represents informational responses
+2xx - represents successful responses
+3xx - represents redirects
+4xx - represents client errors
+5xx - represents server errors
+
+200 ok/success
+201-created used in POST or PUT methods.
+304 - NOT MODIFIED - used in conditional GET requests to reduce the bandwidth use of the network. Here, the body of the response sent should be empty.
+400 - BAD REQUEST - This can be due to validation errors or missing input data.
+401- UNAUTHORIZED - This is returned when there is no valid authentication credentials sent along with the request.
+403 - FORBIDDEN - sent when the user does not have access (or is forbidden) to the resource.
+404 - NOT FOUND - Resource method is not available.
+500 - INTERNAL SERVER ERROR - server threw some exceptions while running the method.
+502 - BAD GATEWAY - Server was not able to get the response from another upstream server.
+................................................
+8. What are the HTTP Methods?
+HTTP Methods are also known as HTTP Verbs. They form a major portion of uniform interface restriction followed by the REST that specifies what action has to be followed to get the requested resource. Below are some examples of HTTP Methods:
+
+GET: This is used for fetching details from the server and is basically a read-only operation.
+POST: This method is used for the creation of new resources on the server.
+PUT: This method is used to update the old/existing resource on the server or to replace the resource.
+DELETE: This method is used to delete the resource on the server.
+PATCH: This is used for modifying the resource on the server.
+OPTIONS: This fetches the list of supported options of resources present on the server.
+The POST, GET, PUT, DELETE corresponds to the create, read, update, delete operations which are most commonly called CRUD Operations.
+
+GET, HEAD, OPTIONS are safe and idempotent methods whereas PUT and DELETE methods are only idempotent. POST and PATCH methods are neither safe nor idempotent.
+.................................................................
+9. Can you tell the disadvantages of RESTful web services?
+
+the services follow the idea of statelessness, it is not possible to maintain sessions.
+
+...........................................................
+
+SOAP - Simple Object Access Protocol 	
+REST - Representational State Transfer
+SOAP is a protocol used to implement web services.	
+REST is an architectural design pattern for developing web services
+SOAP cannot use REST as it is a protocol.	
+REST architecture can have SOAP protocol as part of the implementation.
+SOAP specifies standards that are meant to be followed strictly.	
+REST defines standards but they need not be strictly followed.
+SOAP client is more tightly coupled to the server which is similar to desktop applications having strict contracts.	
+The REST client is more flexible like a browser and does not depend on how the server is developed unless it follows the protocols required for establishing communication.
+SOAP supports only XML transmission between the client and the server.	
+REST supports data of multiple formats like XML, JSON, MIME, Text, etc.
+SOAP reads are not cacheable.	
+REST read requests can be cached.
+SOAP uses service interfaces for exposing the resource logic.	
+REST uses URI to expose the resource logic.
+SOAP is slower.	REST is faster.
+Since SOAP is a protocol, it defines its own security measures.	
+REST only inherits the security measures based on what protocol it uses for the implementation.
+SOAP is not commonly preferred, but they are used in cases which require stateful data transfer and more reliability.	
+REST is commonly preferred by developers these days as it provides more scalability and maintainability.
+
+...........................................................
+While creating URI for web services, what are the best practices that needs to be followed?
+
+While defining resources, use plural nouns. Example: To identify user resource, use the name “users” for that resource.
+
+While using the long name for resources, use underscore or hyphen. Avoid using spaces between words. For example, to define authorized users resource, the name can be “authorized_users” or “authorized-users”.
+
+The URI is case-insensitive, but as part of best practice, it is recommended to use lower case only.
+
+While developing URI, the backward compatibility must be maintained once it gets published. When the URI is updated, the older URI must be redirected to the new one using the HTTP status code 300.
+
+Use appropriate HTTP methods like GET, PUT, DELETE, PATCH, etc. It is not needed or recommended to use these method names in the URI. Example: To get user details of a particular ID, use /users/{id} instead of /getUser
+Use the technique of forward slashing to indicate the hierarchy between the resources and the collections. Example: To get the address of the user of a particular id, we can use: /users/{id}/address
+
+.........................................................................
+
+PUT methods are used to request the server to store the enclosed entity in request. In case, the request does not exist, then new resource has to be created. If the resource exists, then the resource should get updated.	
+POST method is used to request the server to store the enclosed entity in the request as a new resource.
+The URI should have a resource identifier. Example: PUT /users/{user-id}	
+The POST URI should indicate the collection of the resource. Example: POST /users
+PUT methods are idempotent.	
+POST methods are not idempotent.
+PUT is used when the client wants to modify a single resource that is part of the collection. If a part of the resource has to be updated, then PATCH needs to be used.	POST methods are used to add a new resource to the collection.
+The responses are not cached here despite the idempotency.	
+Responses are not cacheable unless the response explicitly specifies Cache-Control fields in the header.
+In general, PUT is used for UPDATE operations.	
+POST is used for CREATE operations.
+.....................................................................
+Based on what factors, you can decide which type of web services you need to use - SOAP or REST?
+
+REST services have gained popularity due to the nature of simplicity, scalability, faster speed, improved performance, and multiple data format support. But, SOAP has its own advantages too. Developers use SOAP where the services require advanced security and reliability.
+
+Do you want to expose resource data or business logic?
+SOAP is commonly used for exposing business logic and REST for exposing data.
+Does the client require a formal strict contract?
+If yes, SOAP provides strict contracts by using WSDL. Hence, SOAP is preferred here.
+Does your service require support for multiple formats of data?
+If yes, REST supports multiple data formats which is why it is preferred in this case.
+Does your service require AJAX call support?
+If yes, REST can be used as it provides the XMLHttpRequest.
+Does your service require both synchronous and asynchronous requests?
+SOAP has support for both sync/async operations.
+REST only supports synchronous calls.
+Does your service require statelessness?
+If yes, REST is suitable. If no, SOAP is preferred.
+Does your service require a high-security level?
+If yes, SOAP is preferred. REST inherits the security property based on the underlying implementation of the protocol. Hence, it can’t be preferred at all times.
+Does your service require support for transactions?
+If yes, SOAP is preferred as it is good in providing advanced support for transaction management.
+What is the bandwidth/resource required?
+SOAP involves a lot of overhead while sending and receiving XML data, hence it consumes a lot of bandwidth.
+REST makes use of less bandwidth for data transmission.
+Do you want services that are easy to develop, test, and maintain frequently?
+REST is known for simplicity, hence it is preferred.
+
+..............................................................
+test RESTful Web Services?
+
+RESTful web services can be tested using various tools like Postman, Swagger, etc. Postman provides a lot of features like sending requests to endpoints and show the response which can be converted to JSON or XML and also provides features to inspect request parameters like headers, query parameters, and also the response headers. Swagger also provides similar features like Postman and it provides the facility of documentation of the endpoints too. We can also use tools like Jmeter for performance and load testing of APIs
+
+..................................................................
+Define RestTemplate in Spring.
+
+The RestTemplate is the main class meant for the client-side access for Spring-based RESTful services. The communication to the server is accomplished using the REST constraints. This is similar to other template classes such as JdbcTemplate, HibernateTemplate, etc provided by Spring. The RestTemplate provides high-level implementation details for the HTTP Methods like GET, POST, PUT, etc, and gives the methods to communicate using the URI template, URI path params, request/response types, request object, etc as part of arguments.
+
+Commonly used annotations like @GetMapping, @PostMapping, @PutMapping, etc are provided by this class from Spring 4.3. Prior to that, Spring provided (and still provides) 
+@RequestMapping annotation to indicate what methods were being used
+
+.........................................................................
+What is the use of @RequestMapping?
+The annotation is used for mapping requests to specific handler classes or methods.
+In spring, all the incoming web request routing is handled by Dispatcher Servlet. When it gets the request, it determines which controller is meant for processing the request by means of request handlers. The Dispatcher Servlet scans all the classes annotated with @Controller. The process of routing requests depends on @RequestMapping annotations that are declared inside the controller classes and their methods
+...........................................................................
+	
+Mostly used traditional Spring MVC service. 	
+Represents RESTful web service in Spring.
+It is mostly used in Spring MVC service where model data needs to rendered using view.	It is used in case of RESTful web service that returns object values bound to response body.
+If response values need to be converted through HttpMessageConverters and sent via response object, extra annotation @ResponseBody needs to be used on the class or the method handlers.	
+The default behavior of the @RestController needs to be written on the response body because it is the combination of @Controller and @ResponseBody.
+@Controller provides control and flexibility over how the response needs to be sent.	@RestController annotation has no such flexibility and writes all the results to the response body.
+
+.................................................................................
+.................................................................................
+
+Java 8 
+Describe the newly added features in Java 8?
+
+Lambda expression	A function that can be shared or referred to as an object.
+Functional Interfaces	Single abstract method interface.
+Stream API	Abstract layer that provides pipeline processing of the data.
+Optional	Wrapper class to check the null values and helps in further processing based on the value.
+
+............................................................................
+programming paradigm Java 8 falls?
+Object-oriented programming language.
+Functional programming language.
+Procedural programming language.
+Logic programming language
+
+.......................................................................
+significant advantages of Java 8?
+Compact, readable, and reusable code.
+Less boilerplate code.
+Parallel operations and execution.
+Can be ported across operating systems.
+High stability.
+Stable environment.
+Adequate support
+
+.................................................................
+Functional or sam interface
+Functional Interfaces are an interface with only one abstract method. Due to which it is also known as the Single Abstract Method (SAM) interface. It is known as a functional interface because it wraps a function as an interface or in other words a function is represented by a single abstract method of the interface.
+
+Functional interfaces can have any number of default, static, and overridden methods. For declaring Functional Interfaces @FunctionalInterface annotation is optional to use. If this annotation is used for interfaces with more than one abstract method, it will generate a compiler error.
+.....................................................................
+functional interface extend/inherit another interface
+
+A functional interface cannot extend another interface with abstract methods as it will void the rule of one abstract method per functional interface.
+It can extend other interfaces which do not have any abstract method and only have the default, static, another class is overridden, and normal methods. For eg:
+
+........................................................................
+pre defined functional interface
+
+Some of the famous pre-defined functional interfaces are Runnable, Callable, Comparator, and Comparable. While Java 8 introduces functional interfaces like Supplier, Consumer, Predicate, etc.
+
+Runnable: use to execute the instances of a class over another thread with no arguments and no return value. 
+
+Callable: use to execute the instances of a class over another thread with no arguments and it either returns a value or throws an exception.
+
+Comparator: use to sort different objects in a user-defined order
+
+Comparable: use to sort objects in the natural sort order
+
+Function: To transform arguments in returnable value.
+
+Predicate: To perform a test and return a Boolean value.
+
+Consumer: Accept arguments but do not return any values.
+
+Supplier: Do not accept any arguments but return a value. 
+
+Operator: Perform a reduction type operation that accepts the same input type
+
+............................................................................
+
+Lambda expression is a type of function without a name. It may or may not have results and parameters. It is known as an anonymous function as it does not have type information by itself. It is executed on-demand. It is beneficial in iterating, filtering, and extracting data from a collection.
+
+As lambda expressions are similar to anonymous functions, they can only be applied to the single abstract method of Functional Interface. It will infer the return type, type, and several arguments from the signature of the abstract method of functional interface
+
+feature
+Lambda expressions can be passed as a parameter to another method. 
+Lambda expressions can be standalone without belonging to any class
+.............................................................................
+optional class
+
+Optional is a container type which may or may not contain value i.e. zero(null) or one(not-null) value. It is part of java.util package. There are pre-defined methods like isPresent(), which returns true if the value is present or else false and the method get(), which will return the value if it is present.
+
+advantage
+It encapsulates optional values, i.e., null or not-null values, which helps in avoiding null checks, which results in better, readable, and robust code It acts as a wrapper around the object and returns an object instead of a value, which can be used to avoid run-time NullPointerExceptions.
+
+..........................................................................
+ What are Java 8 streams?
+A stream is an abstraction to express data processing queries in a declarative way. 
+
+A Stream, which represents a sequence of data objects & series of operations on that data is a data pipeline that is not related to Java I/O Streams does not hold any data permanently.
+..............................................
+ main components of a Stream?
+Components of the stream are:
+
+A data source
+Set of Intermediate Operations to process the data source
+Single Terminal Operation that produces the result
+...............................................................
+sources of data objects a Stream can process?
+A Stream can process the following data:
+
+A collection of an Array.
+An I/O channel or an input device.
+A reactive source (e.g., comments in social media or tweets/re-tweets) 
+A stream generator function or a static factory
+........................................................................................
+What are Intermediate and Terminal operations?
+Intermediate Operations:
+
+Process the stream elements.
+Typically transforms a stream into another stream.
+Are lazy, i.e., not executed till a terminal operation is invoked.
+Does internal iteration of all source elements.
+Any number of operations can be chained in the processing pipeline.
+Operations are applied as per the defined order.
+Intermediate operations are mostly lambda functions.
+Terminal Operations:
+
+Kick-starts the Stream pipeline.
+used to collect the processed Stream data.
+int count = Stream.of(1, 2, 3, 4, 5)
+.filter(i -> i <4) // Intermediate Operation filter
+.count(); // Terminal Operation count
+
+...............................................................................
+most commonly used Intermediate operations?
+
+Filter(Predicate<T>) - Allows selective processing of Stream elements. It returns elements that are satisfying the supplied condition by the predicate.
+
+map(Funtion<T, R>) - Returns a new Stream, transforming each of the elements by applying the supplied mapper function.= sorted() - Sorts the input elements and then passes them to the next stage.
+
+distinct() - Only pass on elements to the next stage, not passed yet.
+
+limit(long maxsize) - Limit the stream size to maxsize.
+
+skip(long start) - Skip the initial elements till the start.
+
+peek(Consumer) - Apply a consumer without modification to the stream.
+
+flatMap(mapper) - Transform each element to a stream of its constituent elements and flatten all the streams into a single stream
+
+................................................................................
+What is the stateful intermediate operation? Give some examples of stateful intermediate operations.
+
+To complete some of the intermediate operations, some state is to be maintained, and such intermediate operations are called stateful intermediate operations. Parallel execution of these types of operations is complex.
+
+For Eg: sorted() , distinct() , limit() , skip() etc. 
+
+Sending data elements to further steps in the pipeline stops till all the data is sorted for sorted() and stream data elements are stored in temporary data structures
+
+.......................................................
+What is the most common type of Terminal operations?
+
+collect() - Collects single result from all elements of the stream sequence.
+reduce() - Produces a single result from all elements of the stream sequence
+count() - Returns the number of elements on the stream.
+min() - Returns the min element from the stream.
+max() - Returns the max element from the stream.
+Search/Query operations
+anyMatch() , noneMatch() , allMatch() , ... - Short-circuiting operations.
+Takes a Predicate as input for the match condition.
+Stream processing will be stopped, as and when the result can be determined.
+Iterative operations
+forEach() - Useful to do something with each of the Stream elements. It accepts a consumer.
+forEachOrdered() - It is helpful to maintain order in parallel streams
+
+...................................................................
+What is the difference between findFirst() and findAny()?
+findFirst()	
+Returns the first element in the Stream	
+findAny() Return any element from the Stream
+Deterministic in nature	
+findAny() Non-deterministic in nature
+
+...........................................................................
+28. How are Collections different from Stream?
+
+Collections are the source for the Stream. Java 8 collection API is enhanced with the default methods returning Stream<T> from the collections.
+collection  streams
+Data structure holds all the data elements	
+No data is stored. Have the capacity to process an infinite number of elements on demand
+External Iteration	
+Internal Iteration
+Can be processed any number of times	
+Traversed only once
+Elements are easy to access	
+No direct way of accessing specific elements
+Is a data store	Is an API to process the data
+............................................................................
+............................................................................
+spring boot
+What is Spring boot?
+Sprint boot is a Java-based spring framework used for Rapid Application Development. It has extra support of auto-configuration and embedded application server like tomcat, jetty, etc.
+.....................................................................
+Features of Spring Boot that make it different?
+Creates stand-alone spring application with minimal configuration needed.
+It has embedded tomcat, jetty which makes it just code and run the application.
+Provide production-ready features such as metrics, health checks, and externalized configuration.
+Absolutely no requirement for XML configuration.
+..............................................................
+1. What are the advantages of using Spring Boot?
+The advantages of Spring Boot are listed below:
+
+Easy to understand and develop spring applications.
+Spring Boot is nothing but an existing framework with the addition of an embedded HTTP server and annotation configuration which makes it easier to understand and faster the process of development.
+Increases productivity and reduces development time.
+Minimum configuration.
+We don’t need to write any XML configuration, only a few annotations are required to do the configuration.
+..............................................................
+2. What are the Spring Boot key components?
+Below are the four key components of spring-boot:
+
+Spring Boot auto-configuration.
+Spring Boot CLI.
+Spring Boot starter POMs.
+Spring Boot Actuators.
+................................................
+3. Why Spring Boot over Spring?
+Starter POM.
+Version Management.
+Auto Configuration.
+Component Scanning.
+Embedded server.
+InMemory DB.
+Actuators
+...................................................
+
+4. What is the starter dependency of the Spring boot module?
+Spring boot provides numbers of starter dependency, here are the most commonly used -
+
+Data JPA starter.
+Test Starter.
+Security starter.
+................................................................
+5. How does Spring Boot works?
+Spring Boot automatically configures your application based on the dependencies you have added to the project by using annotation. The entry point of the spring boot application is the class that contains @SpringBootApplication annotation and the main method.
+
+Spring Boot automatically scans all the components included in the project by using @ComponentScan annotation.
+................................................................
+6. What does the @SpringBootApplication annotation do internally?
+The @SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes. Spring Boot enables the developer to use a single annotation instead of using multiple. But, as we know, Spring provided loosely coupled features that we can use for each annotation as per our project needs.
+....................................................................
+7. What is the purpose of using @ComponentScan in the class files?
+Spring Boot application scans all the beans and package declarations when the application initializes. You need to add the @ComponentScan annotation for your class file to scan your components added to your project.
+.............................................................
+9. What are starter dependencies?
+Spring boot starter is a maven template that contains a collection of all the relevant transitive dependencies that are needed to start a particular functionality.
+Like we need to import spring-boot-starter-web dependency for creating a web application
+...........................................................
+10. What is Spring Initializer?
+Spring Initializer is a web application that helps you to create an initial spring boot project structure and provides a maven or gradle file to build your code. It solves the problem of setting up a framework when you are starting a project from scratch.
+...................................................................
+11. What is Spring Boot CLI and what are its benefits?
+Spring Boot CLI is a command-line interface that allows you to create a spring-based java application using Groovy.
+
+Example: You don’t need to create getter and setter method or access modifier, return statement. If you use the JDBC template, it automatically loads for you.
+..................................................................
+12. What are the most common Spring Boot CLI commands?
+-run, -test, -grap, -jar, -war, -install, -uninstall, --init, -shell, -help.
+.................................................................
+13. What Are the Basic Annotations that Spring Boot Offers?
+The primary annotations that Spring Boot offers reside in its org.springframework.boot.autoconfigure and its sub-packages. Here are a couple of basic ones:
+
+@EnableAutoConfiguration – to make Spring Boot look for auto-configuration beans on its classpath and automatically apply them.
+
+@SpringBootApplication – used to denote the main class of a Boot Application. This annotation combines @Configuration, @EnableAutoConfiguration, and @ComponentScan annotations with their default attributes.
+.....................................................................
+14. What is Spring Boot dependency management?
+Spring Boot dependency management is used to manage dependencies and configuration automatically without you specifying the version for any of that dependencies.
+.............................................................................
+15. Can we create a non-web application in Spring Boot?
+Yes, we can create a non-web application by removing the web dependencies from the classpath along with changing the way Spring Boot creates the application context.
+........................................
+16. Is it possible to change the port of the embedded Tomcat server in Spring Boot?
+Yes, it is possible. By using the server.port in the application.properties.
+................................................
+17. What is the default port of tomcat in spring boot?
+The default port of the tomcat server-id 8080. It can be changed by adding sever.port properties in the application.property file.
+..................................................................
+18. Can we override or replace the Embedded tomcat server in Spring Boot?
+Yes, we can replace the Embedded Tomcat server with any server by using the Starter dependency in the pom.xml file. Like you can use spring-boot-starter-jetty as a dependency for using a jetty server in your project.
+..............................................................
+19. Can we disable the default web server in the Spring boot application?
+Yes, we can use application.properties to configure the web application type i.e spring.main.web-application-type=none.
+.......................................................................
+20. How to disable a specific auto-configuration class?
+You can use exclude attribute of @EnableAutoConfiguration if you want auto-configuration not to apply to any specific class.
+...................................................................
+21. Explain @RestController annotation in Sprint boot?
+It is a combination of @Controller and @ResponseBody, used for creating a restful controller. It converts the response to JSON or XML. It ensures that data returned by each method will be written straight into the response body instead of returning a template.
+....................................................................
+22. What is the difference between @RestController and @Controller in Spring Boot?
+@Controller Map of the model object to view or template and make it human readable but @RestController simply returns the object and object data is directly written in HTTP response as JSON or XML.
+......................................................................
+24. What is the difference between RequestMapping and GetMapping?
+RequestMapping can be used with GET, POST, PUT, and many other request methods using the method attribute on the annotation. Whereas getMapping is only an extension of RequestMapping which helps you to improve on clarity on request.
+.......................................................................
+25. What is the use of Profiles in spring boot?
+While developing the application we deal with multiple environments such as dev, QA, Prod, and each environment requires a different configuration. For eg., we might be using an embedded H2 database for dev but for prod, we might have proprietary Oracle or DB2. Even if DBMS is the same across the environment, the URLs will be different.
+
+To make this easy and clean, Spring has the provision of Profiles to keep the separate configuration of environments.
+.........................................................................
+26. What is Spring Actuator? What are its advantages?
+An actuator is an additional feature of Spring that helps you to monitor and manage your application when you push it to production. These actuators include auditing, health, CPU usage, HTTP hits, and metric gathering, and many more that are automatically applied to your application.
+.................................................................
+27. How to enable Actuator in Spring boot application?
+To enable the spring actuator feature, we need to add the dependency of “spring-boot-starter-actuator” in pom.xml.
+
+<dependency>
+<groupId> org.springframework.boot</groupId>
+<artifactId> spring-boot-starter-actuator </artifactId>
+</dependency>
+28. What are the actuator-provided endpoints used for monitoring the Spring boot application?
+Actuators provide below pre-defined endpoints to monitor our application -
+
+Health
+Info
+Beans
+Mappings
+Configprops
+Httptrace
+Heapdump
+Threaddump
+Shutdown
+.......................................................
+29. How to get the list of all the beans in your Spring boot application?
+Spring Boot actuator “/Beans” is used to get the list of all the spring beans in your application.
+..........................................................................
+30. How to check the environment properties in your Spring boot application?
+Spring Boot actuator “/env” returns the list of all the environment properties of running the spring boot application.
+.................................................................
+31. How to enable debugging log in the spring boot application?
+Debugging logs can be enabled in three ways -
+
+We can start the application with --debug switch.
+We can set the logging.level.root=debug property in application.property file.
+We can set the logging level of the root logger to debug in the supplied logging configuration file.
+............................................................
+32. Where do we define properties in the Spring Boot application?
+You can define both application and Spring boot-related properties into a file called application.properties. You can create this file manually or use Spring Initializer to create this file. You don’t need to do any special configuration to instruct Spring Boot to load this file, If it exists in classpath then spring boot automatically loads it and configure itself and the application code accordingly.
+.......................................................................
+33. What is dependency Injection?
+The process of injecting dependent bean objects into target bean objects is called dependency injection.
+
+Setter Injection: The IOC container will inject the dependent bean object into the target bean object by calling the setter method.
+Constructor Injection: The IOC container will inject the dependent bean object into the target bean object by calling the target bean constructor.
+Field Injection: The IOC container will inject the dependent bean object into the target bean object by Reflection API.
+...................................................................
+34. What is an IOC container?
+IoC Container is a framework for implementing automatic dependency injection. It manages object creation and its life-time and also injects dependencies into the class.
+..................................................................................................................................................................................
+Maven
+Maven is a robust project management tool based on the POM architecture (project object model). It is used for project build, as well as for managing dependencies and documentation. In simple terms, Maven is a tool that can be used to create and manage any Java-based project. Maven is a build automation tool that is mostly used in Java projects but Maven can also be used to create and manage projects written in other languages such as C#, Ruby, Scala, and others.
+.................................................
+1. When should one use Maven?
+The Maven Build Tool can be used in the following conditions:
+
+When the project has a large number of dependencies. Then, using Maven, you can easily manage those dependencies.
+When the version of a dependency changes frequently. To update dependencies, simply update the version ID in the pom file.
+Maven makes it simple to handle continuous builds, integration, and testing.
+When you need a quick way to generate documentation from source code, this is the tool you use. It helps in compiling source code, and then packaging it into JAR or ZIP files.
+.............................................................
+2. Discuss the core concepts of Maven.
+The core concepts of Maven are:
+
+POM Files: Project Object Model (POM) files are XML files that include information about the project and configuration information used by Maven to construct the project, such as dependencies, source directory, plugin, goals, and so on. When you want to run a maven command, you provide it with a POM file to run. To complete its configuration and functions, Maven reads the pom.xml file.
+
+Dependencies and Repositories: Repositories are folders containing bundled JAR files, and dependencies are external Java libraries necessary for Project. The local repository is simply a folder on your computer's hard drive. Maven retrieves dependencies from a central Maven repository and places them in your local repository if they aren't found in the local Maven repository.
+
+Build Life Cycles, Phases, and Goals: A build life cycle is made up of a series of build phases, each of which contains a set of goals. A build lifecycle, phase, or goal is referred to as a Maven command. When a lifecycle is asked to be run using the maven command, all of the build steps in that life cycle are likewise run. When a build phase is requested to be executed, it is followed by all build phases in the given sequence.
+
+Build Profiles: Build Profiles are a set of configuration parameters that allow you to build your project using a variety of setups. For example, you might need to develop and test your project on your local computer. You can add different build profiles to your POM files using its profile elements to enable different builds, which can be triggered in a variety of ways.
+
+Build Plugins: Build Plugins are used to accomplish a certain task. A plugin can be added to the POM file. Maven comes with various pre-installed plugins, but you can also write your own in Java.
+...................................................................
+3. How does Maven work?
+
+Maven works in three steps:
+
+Reading the pom.xml file is the first step.
+The dependencies mentioned in pom.xml are then downloaded from the central repository into the local repository.
+Finally, it builds and generates a report based on the requirements, as well as handles life cycles, phases, goals, plugins, and other tasks
+
+.......................................................................
+5. What elements are used for creating a pom.xml file?
+The following elements are necessary for creating a pom.xml file:
+
+project- The root element of the pom.xml file is the project.
+
+modelVersion- It identifies which version of the POM model you're working with. For Maven 2 and Maven 3, use version 4.0.0.
+
+groupId- groupId is the project group's identifier. It is unique, and you will most likely use a group ID that is similar to the project's root Java package name.
+
+artifactId- It is used for naming the project you're working on.
+
+version- The version number of the project is contained in the version element. If your project has been released in multiple versions, it is helpful to list the versions.
+Other Pom.xml File Elements
+
+dependencies- This element is used to establish a project's dependency list.
+dependency- dependency is used inside the dependencies tag to define a dependency. The groupId, artifactId, and version of each dependency are listed.
+name- This element is used to give our Maven project a name.
+scope- This element is used to specify the scope of this maven project, which can include compile, runtime, test, among other things.
+packaging- The packaging element is used to package our project into a JAR, WAR, and other output formats.
+............................................................................
+6. What are the different types of Maven repositories? Discuss.
+The three types of repositories of Maven are:
+
+Local repository
+Central repository
+Remote repository
+
+Maven scans these repositories for dependencies. Maven looks in the Local repository first, then the Central repository, and finally the Remote repository if the Remote repository is defined in the POM.
+
+Local Repository: Local repository is a directory on the developer's device. The local repository contains all of Maven's dependencies. Even though several projects rely on dependencies, Maven only needs to download them once.
+Central Repository: The Maven community has built the central Maven repository. Maven searches this central repository for any dependencies that aren't available in your local repository. The dependencies are subsequently downloaded into your local repository by Maven.
+Remote Repository: Maven may download dependencies from a remote repository hosted on a web server. It is frequently used to host internal organization projects. The dependencies are subsequently downloaded into your local repository by Maven.
+.....................................................................................
+7. What command should one use to install JAR files in the Local Repository?
+JAR files are installed in the local repository using mvn install.
+The following plugin is used to manually install the JAR into the local Maven repository: install-file-Dfile = <file path>
+...................................................................
+8. In Maven, what do you mean by Clean, Default, and Site?
+The three built-in build life cycles are:
+
+Clean: The clean lifecycle is in charge of project cleaning.
+Default: The project deployment is handled by the default lifecycle.
+Site: The creation of the project's site documentation is referred to as the site lifecycle.
+................................................................
+9. What are the different phases of the default life cycle?
+The different phases of the default lifecycle are:
+
+Validate: Make sure the project is correct and that you have all of the necessary information.
+Test: Test the compiled source code using an appropriate unit testing framework. These tests should not demand that the code be packed or deployed; instead, take the compiled code and package it in a manner that can be distributed, such as a JAR.
+Compile: Compile the project's source code.
+Verify: Perform any necessary checks on integration test findings to ensure that quality criteria are met.
+Install: Adds the package to the local repository, allowing it to be used as a dependency in other projects.
+Deploy: Copies the entire package to the remote repository for sharing with other developers and organizations, and is done in the build environment.
+
+...........................................................................
+10. What are Maven plugins used for? What are the types of Maven plugins?
+Maven Plugins are used for:
+
+Creating JAR files.
+Creating WAR files.
+Compiling the source code files.
+Unit testing of the code.
+Creating the project documentation.
+Creating project reports.
+
+Maven plugins are divided into two categories:
+
+Build plugins:  These plugins are used throughout the build process and are configured in the pom.xml file's <build/> element.
+Reporting plugins: These plugins are configured in the pom.xml's <reporting/> element and run during stage generation.
+................................................................................
+11. “Maven uses convention over configuration” - Why is it so?
+Because developers simply need to establish a Maven project while employing convention,  Maven uses convention over configuration. The rest of the structure is generated automatically. In the case of configuration, build processes are to be created manually.
+For setting up a project, creating artifacts, releasing code, and running unit tests, Maven has a number of conventions.
+.................................................................................
+13. In Maven, what is a snapshot?
+A snapshot is a specific version of a project that shows the most recent development copy of the project being worked on. Maven always checks out a SNAPSHOT of the project in the remote repository for each build.
+
+As a result, anytime Maven discovers a newer SNAPSHOT of the project, it downloads and replaces the project's older .jar file in the local repository.
+.......................................................................
+14. What are the locations where Maven dependencies are stored?
+Maven saves all of the JARs, dependency files, and other things it downloads in the Maven local repository. All of the artifacts are kept locally in the Maven local repository, which is a folder on the local machine.
+...........................................................................
+17. How to generate javadocs in Maven?
+The maven-javadoc plugin is used by Maven to generate a project's javadocs. To create javadocs, this plugin internally uses the JDK\bin\javadoce.exe command. The javadocs for the project are generated when the project is deployed with the mvn install command.
+..................................................................
+18. What exactly is MOJO?
+Every Maven plain Old Java Object (MOJO) is an executable goal, and a plugin pertains to the distribution of these MOJOs. MOJO allows Maven to add functionalities that it doesn't already have. In Maven, a MOJO is a single unit of the task.
+.................................................................
+19. What do you understand about the term ‘Super POM’?
+Any POM file has the ability to point to its parent POM. There is a system-wide POM file that is automatically considered as the parent POM file if the parent POM element is absent. The super POM is the name given to this POM file. Finally, the super POM is used to extend all of the application POM files. The apex of the POM hierarchy is the super POM file. The super POM file contains all of the default configurations. All of the configurations defined in the super POM file will be inherited by even the simplest version of a POM file. You can alter any option you want by redefining the same section in your application POM file.
+
+.........................................................................
+20. What is a 'Dependency Scope'? What are the different types of Dependency Scopes?
+The dependency scope pertains to all dependencies related to the present stage of the build.
+
+The following are the several sorts of dependence scopes:
+
+Compile- It's the default scope, and it shows which dependencies are available in the project's classpath.
+Provided- It denotes that the dependency is delivered at runtime by the JDK, web server, or container.
+Runtime- This indicates that the dependency is not required during compilation but is necessary during execution.
+Test- It claims that dependencies are only available during the test compilation and execution phases.
+System- It implies that you must specify the system path.
+Import- This means that the dependencies in that POM's section should be used instead of the identified or specified POM.
+......................................................
+23. What are the phases of the clean lifecycle?
+The Maven clean lifecycle takes care of eliminating all temporary files from the output directory, including generated source files, compiled classes, and previous JAR files, among other things.
+
+pre-clean- performs tasks that are necessary prior to actual project cleaning.
+clean- delete all files created by the previous build.
+post-clean- performs tasks that are necessary to finalize project cleaning.
+.....................................................................
+24. What are the phases of the site lifecycle?
+Everything related to generating documentation for your project is handled by the Maven site lifecycle.
+
+pre-site- performs tasks that are necessary prior to actual project site generation.
+site- develop the project’s site generation.
+post-site- performs tasks that are necessary to finalize project site generation, also prepares for site deployment.
+site-deploy- deploy the developed site documentation to the web server of your choice.
+.............................................................................
+26. What is the settings.xml file in Maven?
+A Maven installation is configured using the settings.xml file. It's comparable to a pom.xml file, but it's either global or user-specific. The Maven settings.xml file provides elements that define the values required to configure Maven's execution in several ways. These values include the location of the local repository, authentication information, and alternate remote repository servers among others.
+
+Proxy configuration
+Local repository configuration
+Remote repository configuration
+Central repository configuration
+...............................................................
+30. What do you understand about ‘Transitive Dependency’ in Maven? What is dependency exclusion?
+By incorporating transitive dependencies automatically, Maven eliminates the need to discover and define libraries that the dependencies require. According to transitive dependency, if X is dependent on Y and Y is dependent on Z, then X is dependent on both Y and Z.
+
+The "exclusion" element can be used to exclude any transitive dependency. If X is reliant on Y and Y is reliant on Z, then X can declare Z as excluded.
+..............................................
+42. What is the difference between the maven package and the maven install?
+package: converts the compiled code into a distributable format, such as a JAR.
+
+install: adds the package to the local repository, allowing it to be used as a dependency in other projects.
+
+................................................................................................................................................................................. What is JPA?
+Java Persistence API (JPA) is a specification for managing data persistence in Java applications. JPA is used to simplify the process of writing code for data persistence by providing a high-level abstraction layer over the underlying data storage technology, such as relational databases. JPA helps in mapping Java objects to relational database tables and allows developers to perform CRUD (create, read, update, delete) operations on data. JPA is often used in coexistence with Hibernate, a popular open-source ORM (object-relational mapping) framework.
+................................................................................
+
+2. What is ORM Framework and how is JPA related to that?
+An Object-Relational Mapping (ORM) framework is a software tool that allows developers to map object-oriented programming language constructs to relational database constructs. It provides a layer of abstraction between the application code and the database, allowing developers to work with objects and classes rather than SQL queries.
+
+JPA (Java Persistence API) is a Java EE standard that provides an ORM framework for mapping Java objects to relational databases. It defines a set of interfaces and annotations that allow developers to create persistent entities, query data, and manage relationships between entities.
+
+JPA is built on top of the Java Persistence Architecture (JPA), which is a standard for managing persistence in Java applications. JPA provides a set of standard interfaces and annotations that can be used with any JPA-compliant ORM framework.
+.........................................................................
+
+3. What are some benefits of using an ORM framework like JPA?
+Using an Object-Relational Mapping (ORM) framework like JPA (Java Persistence API) has several benefits. Some of them are:
+
+Increased Productivity: .
+Portability:
+Scalability: 
+Standardization:
+.................................................................
+4. Can you tell the difference between JPA and Hibernate?
+JPA (Java Persistence API) is a specification for ORM (Object-Relational Mapping) in Java, while Hibernate is an implementation of JPA.
+In other words, JPA provides a standard set of interfaces and annotations for ORM, while Hibernate is a concrete implementation of those interfaces and annotations
+..................................................................
+5. What are entities in JPA? Explain the concept in detail.
+In JPA, an entity is a lightweight Java class that represents a persistent data object. Entities are used to map Java objects to database tables, where each entity corresponds to a row in the table.
+
+Entities are defined using annotations, which provide metadata about how the entity should be persisted and how it relates to other entities in the application. The most commonly used annotation for defining entities is @Entity, which marks a Java class as an entity. Entities typically have instance variables that correspond to columns in the database table, and methods that provide access to these variables. JPA also provides annotations for defining relationships between entities, such as @OneToOne, @OneToMany, @ManyToOne, and @ManyToMany.
+
+Entities can be persisted in the database using the JPA “EntityManager” interface, which provides methods for creating, reading, updating, and deleting entities. When an entity is persisted, JPA creates a corresponding row in the database table, and when an entity is read from the database, JPA populates the entity's instance variables with the corresponding column values.
+
+
+In this diagram, the Entity represents a persistent data object, which is defined using fields and methods. Each field corresponds to a column in the database table, and each method provides access to these fields. The Id field is typically annotated with @Id annotation to indicate that it is the primary key for the entity.
+...........................................................................
+6. What is JPQL and how is it used in JPA?
+JPQL stands for Java Persistence Query Language. It is a platform-independent object-oriented query language that is used to retrieve data from a relational database using Java Persistence API. JPQL is similar to SQL (Structured Query Language) in terms of syntax, but instead of operating on tables and columns, it operates on JPA entities and their corresponding attributes.
+
+JPQL is used in JPA to create dynamic queries that can be executed against a relational database. These queries are defined as strings and can be executed using the JPA EntityManager interface. JPQL allows developers to write complex queries that can retrieve data from multiple tables, perform aggregations, and filter results based on conditions.
+
+JPQL queries can be run against various databases without modification because it is intended to be portable across various databases. Additionally, JPQL supports object-oriented features like polymorphism and inheritance, enabling developers to create queries that interact with object hierarchies as compared to just flat tables.
+
+Let’s look at the sample code to understand it better.
+
+String jpql = "SELECT e FROM Employee e WHERE e.department = :dept";
+
+TypedQuery<Employee> query = entityManager.createQuery(jpql, Employee.class);
+query.setParameter("dept", "IT");
+
+List<Employee> results = query.getResultList();
+In this example, the JPQL query selects all ‘Employee’ objects that belong to the ‘IT’ department. The query is executed using the ‘createQuery’ method of the ‘EntityManager’ interface, and the ‘setParameter’ method is used to bind the value of the ‘dept’ parameter to the query
+.............................................................................
+7. What is a database transaction and how is it used in JPA?
+A database transaction is a sequence of database operations that are executed as a single logical unit of work. A transaction is typically used to ensure data consistency and integrity, by ensuring that either all of the operations in the transaction are executed, or none of them is executed.
+
+In JPA, transactions are used to manage the interactions between Java code and the underlying relational database. JPA provides a transaction management system that allows developers to define and control transactions in their applications.
+
+JPA defines a ‘javax.persistence.EntityTransaction’  interface that represents a transaction between a Java application and the database. A typical usage pattern for a JPA transaction involves the following steps:
+
+Obtain an instance of the ‘EntityManager’  interface.
+Begin a transaction using the ‘EntityTransaction’ interface's ‘begin()’ method.
+Perform one or more database operations using the ‘EntityManager’ interface's persistence methods, such as ‘persist()’, ‘merge()’, or ‘remove()’.
+Commit the transaction using the ‘EntityTransaction’ interface's ` method.
+If any errors occur during the transaction, roll back the transaction using the ‘EntityTransaction’ interface's ‘rollback()’ method.
+......................................................
+8. What are the advantages of using JPA over JDBC?
+JPA is a higher-level abstraction of JDBC (Java Database Connectivity) that provides several advantages over JDBC. Here are some of the key advantages of using JPA over JDBC:
+
+Object-Relational Mapping: It offers an Object-Relational Mapping (ORM) framework that enables developers to map Java objects to database tables without having to create SQL queries. Developers will have to write less code as a result, and the codebase will be simpler to maintain.
+Portability: It is a standardized API that is independent of any specific database implementation. This means that applications written using JPA can be easily ported to different databases without having to rewrite the database access code.
+Increased Productivity: It offers a higher-level API that is simpler and easier to use than JDBC. This reduces the amount of time that developers spend writing and debugging database access code, and allows them to focus on other aspects of the application.
+Improved Performance: By minimizing the number of database queries that are run, it uses a caching mechanism that can enhance performance. This may lead to quicker response times and improved scalability.
+Transaction Management: It offers a transaction management system that simplifies the process of managing database transactions. 
+Object-Oriented Features: It provides support for object-oriented features such as inheritance and polymorphism. This allows developers to work with Java objects instead of relational tables, which is easy to maintain.
+.....................................................................
+9. Difference between JPA Repository and CRUD Repository? Explain with the help of an example.
+JPA Repository is an interface provided by Spring Data JPA that extends the JpaRepository interface. It provides a set of methods for performing common operations on entities, such as save, delete, findAll, and findById. In addition to these methods, it also allows you to define custom query methods using the @Query annotation.
+
+On the other hand, CRUD Repository is an interface provided by Spring Data that provides a set of methods for performing CRUD (Create, Read, Update, Delete) operations on entities. It provides basic functionality for working with data, such as save, delete, findById, and findAll.
+
+In short, JPA Repository extends the functionality of the CRUD Repository by providing additional methods and the ability to define custom queries. However, if you only need basic CRUD functionality, then using CRUD Repository may be sufficient. 
+
+Example -
+
+Let's say we have an entity called "Product" with the following properties: id, name, description, and price. We want to create a Spring Data repository to perform CRUD operations on this entity.
+
+First, let's create a repository using the CRUD Repository interface:
+
+import org.springframework.data.repository.CrudRepository;
+public interface ProductRepository extends CrudRepository<Product, Long> {
+}
+This interface provides basic CRUD functionality for the Product entity, such as save(), delete(), findById(), and findAll().
+
+Now let's create a repository using the JPA Repository interface:
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    List<Product> findByPriceGreaterThan(double price);
+    
+    @Query("SELECT p FROM Product p WHERE p.name LIKE %?1%")
+    List<Product> findByNameContaining(String keyword);
+}
+This interface extends the JpaRepository interface and provides additional methods, such as findByPriceGreaterThan() and findByNameContaining(). These methods are defined using Spring Data's method name query and the @Query annotation, respectively.
+........................................................................
+10. What is a Named Query in JPA? How is it used? And what are the benefits of using this?
+In JPA, a named query is a pre-defined query that is given a name and can be used in multiple places in an application. It is defined in the entity class using the @NamedQuery annotation and can be used to retrieve entities based on specific criteria.
+
+Consider the below snippet to understand better about this - 
+
+@Entity
+@NamedQuery(
+    name = "Product.findByPriceGreaterThan",
+    query = "SELECT p FROM Product p WHERE p.price > :price"
+)
+public class Product {
+    // ...
+}
+In this example, we can see a named query called "Product.findByPriceGreaterThan", which selects all products whose price is greater than a given value. The query is defined using JPQL syntax and uses a named parameter ":price" to specify the price value.
+
+To use the named query in our code, we can retrieve it using EntityManager's createNamedQuery() method and pass in the name of the query:
+
+TypedQuery<Product> query = entityManager.createNamedQuery("Product.findByPriceGreaterThan", Product.class);
+query.setParameter("price", 10.0);
+List<Product> products = query.getResultList();
+In this code snippet, we create a TypedQuery object using the named query "Product.findByPriceGreaterThan" and pass in the Product class as the expected result type. We then set the value of the named parameter ":price" to 10.0 and execute the query using getResultList() to retrieve a list of products that match the criteria.
+
+Using named queries in JPA
+Reusability,Performance,Maintenance:
+............................................................... 
+11. What are the various query methods in JPA to retrieve data from the database? List some of the most used methods.
+In JPA, there are several query methods that can be used to retrieve data from the database:
+
+createQuery(): This method creates a JPQL (Java Persistence Query Language) query that can be used to retrieve data from the database. JPQL queries are similar to SQL queries, but they operate on JPA entities rather than database tables.
+createNamedQuery(): This method creates a named JPQL query that has been defined in the entity class using the @NamedQuery annotation.
+createNativeQuery(): This method creates a native SQL query that can be used to retrieve data from the database using SQL syntax. Native SQL queries can be used when JPQL is not sufficient for complex queries or for accessing database-specific features.
+find(): This method retrieves an entity from the database by its primary key.
+........................................................................
+13. What is the purpose of EntityManager in JPA?
+The EntityManager in JPA is the primary interface through which an application interacts with the Persistence Context, which is responsible for managing the lifecycle of entity objects and their persistence in the database. The EntityManager provides a set of APIs for performing CRUD (Create, Read, Update, Delete) operations on the database using the entity objects.
+
+The EntityManager is responsible for the following tasks:
+
+Creating and removing entity objects.
+Retrieving entity objects from the database.
+Updating and persisting changes made to entity objects.
+Managing the association between entities.
+Managing the lifecycle of entity objects.
+Executing queries on the database using JPQL (Java Persistence Query Language).
+Caching entity objects for improved performance
+The EntityManager API provides several methods for performing these tasks, such as ’persist()’, ‘find()’, ‘merge()’, ‘remove()’, and ‘createQuery()’. The EntityManager is typically obtained from a PersistenceContext, which is created and managed by the JPA provider, either by injection or programmatically.
+
+.........................................................................
+15. What is the purpose of the @JoinColumn annotation in JPA?
+The @JoinColumn annotation in JPA is used to specify a join column for a relationship mapping between two entities. It is used to define the columns in a table that will be used to establish the association between two entities, where one entity is the owner of the relationship (the one that has the foreign key column), and the other is the inverse side.
+
+The @JoinColumn annotation can be applied to a field or property that is mapped as a foreign key column in the database. It allows you to specify the name of the column, its type, its nullable attribute, and its foreign key constraints. You can also use the @JoinColumn annotation to specify the name of the table that contains the foreign key column.
+
+The @JoinColumn annotation can be used with the @ManyToOne, @OneToOne, @OneToMany, and @ManyToMany annotations to define the join columns for the relationship mapping.
+.......................................................................
+18. What is the purpose of the @Transactional annotation in JPA?
+The @Transactional annotation in JPA is used to indicate that a method should be executed within a transaction. It is used to define the scope of a transaction, which determines when changes made to the database will be committed. It can be applied at the class or method level, and it is typically used with the Spring Framework's declarative transaction management feature.
+
+When a method annotated with @Transactional is called, a transaction will be started before the method is executed, and any changes made to the database within the method will be persisted to the database when the transaction is committed. If an exception is thrown within the method, the transaction will be rolled back, and any changes made to the database within the method will be discarded.
+......................................................................
+20. What is the purpose of the EntityManagerFactory in Spring Data JPA?
+EntityManagerFactory in Spring Data JPA serves the following purposes:
+
+The EntityManagerFactory in Spring Data JPA is responsible for creating EntityManager instances. 
+It reads the persistence configuration and creates EntityManager instances based on that configuration. 
+The EntityManagerFactory manages the lifecycle of EntityManager instances and is thread-safe. 
+It is responsible for managing the connection to the database and can be configured with various properties to control the behavior of the EntityManager instances it creates. 
+In Spring Data JPA, the EntityManagerFactory is usually created automatically by the framework and injected into the application's code.
+...........................................................................
+21. Explain in detail the JPA application life cycle?
+The lifecycle of a JPA application can be divided into several stages, each with its own set of actions and interactions between the various components involved. These stages are:
+
+Entity Class Creation: The first stage in the lifecycle of a JPA application is the creation of entity classes. Entity classes are Java classes that represent database tables and have properties that correspond to columns in those tables.
+Entity Mapping: The next stage is entity mapping, which involves defining the mapping between the entity classes and the database tables. This is typically done using annotations or XML configuration files, and it specifies how the properties of the entity classes correspond to the columns in the database tables.
+Persistence Unit Creation: The third stage is the creation of a Persistence Unit, which is a logical grouping of one or more entity classes and their associated metadata. This is typically done using a persistence.xml file, which specifies the database connection details, the list of entity classes to be managed, and any additional configuration options.
+EntityManagerFactory Creation: The next stage is the creation of an EntityManagerFactory, which is responsible for creating EntityManager instances. The EntityManagerFactory is typically created once at the start of the application and is used to create EntityManager instances throughout the application.
+EntityManager Creation: The next stage is the creation of an EntityManager, which provides the primary interface for interacting with the Persistence Context. The EntityManager is responsible for managing the lifecycle of entity objects, executing queries, and performing CRUD operations on the database.
+Transaction Management: The next stage is transaction management, which involves defining the boundaries of transactions and managing their lifecycle. Transactions are used to ensure data consistency and integrity, and they are typically managed using annotations or programmatic APIs.
+Entity Lifecycle Management: The next stage is entity lifecycle management, which involves managing the lifecycle of entity objects within the Persistence Context. Entity objects can be in one of several states, including New, Managed, Detached, and Removed, and their state can be changed using the EntityManager API.
+Query Execution: The final stage is query execution, which involves executing JPQL queries to retrieve data from the database. JPQL is a query language that is similar to SQL but is specific to JPA.
+Note: This is a simplified view of the JPA lifecycle and there may be additional stages or variations depending on the specific implementation and configuration of the application.
+
+
+................................................................
+24. How can you use JPA to perform pagination of query results? What are the advantages of using pagination over fetching all results at once?
+The advantages of using pagination over fetching all results at once include:
+
+Reduced memory usage: 
+Faster response times: 
+Improved user experience:
+Better performance: 
+......................................................................
+27. What is the purpose of the @OneToOne and @OneToMany annotations in JPA? Explain in detail with examples.
+In JPA, @OneToOne and @OneToMany are two annotations used to specify the type of relationship between two entities.
+
+@OneToOne is used to specify a one-to-one relationship between two entities. It is typically used when one entity has a single associated entity of another type and vice versa.
+............................................................................
+28. What types of identifier generation does JPA support?
+JPA provides several strategies for generating unique identifiers for entity objects. Here are the different types of identifier generation supported by JPA:
+
+GenerationType.AUTO: This is the default strategy, and the choice of strategy is determined by the JPA provider. The strategy may be GenerationType.IDENTITY, GenerationType.SEQUENCE, or GenerationType.TABLE.
+GenerationType.IDENTITY: This strategy uses an auto-incremented database column to generate unique identifier values. This is only supported for databases that have auto-increment columns, such as MySQL, PostgreSQL, and SQL Server.
+GenerationType.IDENTITY: This strategy uses a user-defined algorithm to generate unique identifier values. You can define your own identifier generation strategy by implementing the “javax.persistence.spi.IdGenerator” interface.
+
+..................................................................................................................................................................................
+Testing is an important part of the software development process as it helps in resolving bugs before the software goes to production. Unit testing is a type of testing that tests individual entities at a time. JUnit is an open-source, Java-based and one of the most popular unit testing frameworks and is supported by most popular IDEs like Eclipse, IntelliJ etc. It is used to write and run unit tests by providing annotations for identifying the test methods and expected results. This framework allows writing codes faster, increases the quality of the source code and helps in identifying bugs in the source code at a very early stage. 
+...................................................................
+1. What is JUnit?
+JUnit is an open-source, Java-based unit testing framework that plays a crucial role in achieving the culture of TDD (Test Driven Development). The TDD culture lays strong emphasis on setting up the test data for testing a logic that would be implemented once the testing is successful. JUnit helps to increase the software stability as it helps in identifying the bug in the code logic at an early stage without requiring the software to go to production. This helps in reducing the time required to debug any issues later on.
+......................................................................
+2. What is Unit Testing?
+Unit testing is a software testing strategy that tests single entities like methods or classes at a time. This helps to ensure that the product quality is met as per the business requirements. It also helps in reducing the technical debt of the application by helping developers discover issues in the code logic due to any changes. It also gives insights into how the code logic implemented could impact future changes. 
+.................................................................
+
+3. Why do we use JUnit? Who uses JUnit more - Developers or Testers?
+JUnit is used more often by developers for implementing unit test cases for the functionalities they have developed. However, these days testers also use this framework for performing unit testing of the applications. 
+
+JUnit is used due to the following reasons:
+
+Helps in automating test cases.
+Helps in reducing defects in the code logic whenever the logic changes.
+Helps in reducing the cost of testing as the bugs are identified, captured and addressed at early phases in the software development.
+Helps to identify the gaps in coding and gives a chance to refactor the code
+...........................................................................
+4. What are the features of JUnit?
+Following are the features of JUnit:
+
+JUnit is an open-source framework.
+Supports automated testing of test suites.
+Provides annotations for identifying the test methods.
+Provides assertions to test expected results or exceptions of the methods under test.
+Provides a platform for running test cases automatically and checking their results and giving feedback.
+.......................................................................
+5. Is it mandatory to write test cases for every logic?
+No, it is not mandatory. However, test cases can be written for the logic which can be reasonably broken and tested independently.
+........................................................................
+6. What are some of the important annotations provided by JUnit?
+Some of the annotations provided by JUnit are as follows:
+
+@Test: This annotation over a public method of void return type can be run as a test case. This is a replacement of the org.junit.TestCase annotation.
+@Before: This is used when we want to execute the preconditions or any initialisation based statements before running every test case.
+@BeforeClass: This is used when we want to execute statements before all test cases. The statements may include test connections, common setup initialisation etc.
+@After: This is used when we want to execute statements after each test case. The statements can be resetting the variables, deleting extra memory used etc.
+@AfterClass: This is used when certain statements are required to be executed after all the test cases of the class are run. Releasing resource connections post-execution of test cases is one such example.
+@Ignores: This is used when some statements are required to be ignored during the execution of test cases.
+@Test(timeout=x): This is used when some timeout during the execution of test cases is to be set. The value of x is an integer that represents the time within which the tests have to be completed.
+@Test(expected=NullPointerException.class): This is used when some exception thrown by the target method needs to be asserted.
+..................................................................
+8. What will happen if the return type of the JUnit method is String?
+The test case execution will fail because the JUnit methods are designed to return void
+.........................................................
+9. What is the importance of @Test annotation?
+@Test annotation is used for marking the method as a test method.
+...................................................................
+10. What is a JUnit fixture?
+Fixture represents a fixed state of object sets used as a baseline for running test methods. This is to ensure there is a fixed and well-known environment where the results of the test methods are repeatable when run multiple times. The fixture has the following 2 methods:
+
+setUp()This runs before every test case is run.
+tearDown() This method is run after every test is run.
+...........................................................................
+11. What is a test suite?
+A test suite is a bundle of multiple unit test cases which can be run together. The following image represents how to test suite looks like:
+
+
+We can use @RunWith and @Suite annotations over the test class for running the test suite.
+...............................................................................
+12. What is mocking and stubbing?
+Mocking is a phenomenon where an object mimics a real object. Whereas, stubbing are the codes responsible for taking place of another component. Mockito, EasyMock are some of the mocking frameworks in Java.
+...................................................................
+13. What are the JUnit Assert Methods?
+Assert methods are utility methods that support assert conditions in test cases. They belong to the Assert class in JUnit 4 and the Assertions class in JUnit 5. It is recommended to import the assert methods statically to the test class for avoiding using the class as a prefix to the method. 
+
+assertEquals(): This method compares 2 objects for equality by making use of the equals() method of the object. This is shown in the test case that multiplies 2 methods and checks for the expected and actual value below.
+       When two objects are found to be equal based on the equals() method implementation of the object, then assertEquals() returns normally. Else, an exception will be thrown and the test will stop its execution.
+
+assertTrue(): This method tests whether the value of a variable is true.
+   If the assertion fails, then an exception will be thrown and the test execution will be stopped.   
+
+assertFalse(): This method tests whether the value of a variable is false.
+ If the assertion fails, then an exception will be thrown and the test execution will be stopped.
+
+assertNull(): This method tests if a variable is null. If null, it returns normally else an exception will be thrown and the test stops execution.
+
+assertNotNull(): This method tests whether a variable is not null. If it is not null, then the test returns normally else an exception will be thrown and the test stops its execution.
+
+assertSame(): This method checks if two references of the object are pointing to the same object.
+   If the object references are pointing to the same object, the test runs normally else, it will throw an exception and the test execution is aborted.
+
+assertNotSame(): This method checks if two references of an object are not pointing to the same object.
+  If the object references are not pointing to the same object, the test runs normally else, it will throw an exception and the test execution is aborted.   
+
+assertThat(): This method compares the object to org.hamcrest.Matcher for checking if it matches whatever the Matcher class requires for the object to match.
+In this code, we will be asserting that the list has some items specified in the hamcrest’s hasItems() method. If the assertThat is successful, i.e if the list indeed has items specified, then the test runs normally. Else, the test throws an exception and the test stops executing.
+................................................................
+14. What is the importance of @RunWith annotation?
+@RunWith annotation lets us run the JUnit tests with other custom JUnit Runners like SpringJUnit4ClassRunner, MockitoJUnitRunner etc. We can also do parameterized testing in JUnit by making use of @RunWith(Parameterized.class).
+.....................................................................
+16. What are the best practices for writing Unit Test Cases?
+A standard unit test case comprises a known input and an expected output. These two things need to be known before we run the test case. A known input is tested for a precondition and an expected output is tested by postcondition. Following are the best practices for writing unit test cases:
+
+For every method, we need to have at least two unit test cases - a positive test case and a negative test case.
+If there are sub-requirements for a requirement, then those sub-requirements should have their own positive and negative test cases.
+Each test case should be independent of other test cases. If we make a chain of unit test cases, then it would not be possible for finding the root cause of the test case failures.
+Mock all the external services that are used by the modules under test. This is necessary because we do not want to unnecessarily debug our modules under test due to the failures of the external systems.
+Configuration settings need not be tested as they won’t be part of any unit code. Even if we want to inspect the configuration, then test whether the loading code is working or not.
+The unit test cases should be named consistently and clearly. The names of the test cases should be dependent on the operations that the test case would test.
+
+.............................................................................
+17. What are the differences between JUnit 4 and JUnit 5?
+Category	JUnit 4	JUnit 5
+Annotation for executing method before all test methods run in the current class	@BeforeClass	@BeforeAll
+Annotation for executing method after all test methods run in the current class	@AfterClass	@AfterAll
+Annotation for executing method before each test case	@Before	@BeforeEach
+Annotation for executing method after each test method	@After	@AfterEach
+Architecture	It has everything like platform, annotations etc bundled in a single jar file.	JUnit 5 is composed of 3 sub-units - JUnit Platform, JUnit Jupiter and JUnit Vintage
+Required JDK Version	This needs Java 5 or higher versions.	This needs Java 8 or above.
+Assertions	Assert methods are present in org.junit.Assert package for validating expected and actual outputs.	Assert methods are present in the org.junit.jupiter.Assertions package. The methods also have overloaded methods for supporting error messages in case tests fail.
+...........................................................................
+19. How to ignore tests in JUnit?
+We need to ignore test cases when we have certain functionalities that are not certain or they are under development. To wait for the completion of the code, we can avoid running these test cases. In JUnit 4, we can achieve this by using @Ignore annotation over the test methods. In JUnit 5, we can do it using @Disabled annotation over the test methods.
+..............................................................................
+20. What is the purpose of @Before and @After annotations in JUnit 4?
+These are the annotations present in JUnit 4. Methods annotated with @Before will be called and run before the execution of each test case. Methods annotated with @After will be called and executed after the execution of each test case. If we have 5 test cases in a JUnit class, then the methods annotated with these two would be run 5 times. In JUnit 5, the annotations @Before and @After are renamed to @BeforeEach and @AfterEach for making it more readable.
+.........................................................................
+21. How can we test protected methods?
+For testing protected methods, the test class should be declared in the same package as that of the target class.
+.......................................................................
+22. Why can't we use System.out.println() for testing and debugging?
+If we use System.out.println() for debugging, then we would have to do a manual scan of the outputs every time program is executed to ensure that the output printed is the expected output. Also, in the longer run, writing JUnit tests will be easier and will take lesser time. Writing test cases will be like an initial investment and then, later on, we can later automatically test them on the classes.
+............................................................................
+31. What are some of the best practices to be followed while writing code for making it more testable?
+Following are some of the best practices that can be followed while coding to make the code more testable:
+
+Make use of interfaces as a wrapper to implementation classes. This helps testers to replace the class with mocks or stubs to test the module.
+Use dependency injection wherever needed instead of creating. new objects. This makes it easy for testing individual modules and also supply dependency in the test configuration.
+Avoid using static methods as that makes it difficult to test because they cannot be called polymorphically.
+.....................................................................................
+32. Why does JUnit report only the first failure in a single attempt?
+JUnit is usually designed in a way that it deals with smaller tests and is capable of running each assessment with a boundary of separate analysis. Due to this, it reports only the first failure on each test case attempt.
+...........................................................................
+33. How can we do testing for private methods?
+It is generally not required to test private methods directly. Since they are private, it is assumed that they are called from public methods. If these methods are working as expected, then by extension it is considered that the private methods are working correctly. However, we can explore how the private methods are tested using reflection. 
+.................................................................
+34. How can you test a generics class?
+Generics allows creating classes, interfaces or methods that operate with different data types at a time. In order to test Generic entities, we can test it for one or two datatypes for the logic since the datatype allocation are evaluated at compilation time for type-correctness.
+.....................................................................
+35. Why do we need mocking in unit testing?
+Mocking is the process of creating and using mock objects that simulates the behaviour of real objects and is used to isolate the behaviour of the module under test from its external dependencies or services. These are particularly useful in unit testing and help in making unit test cases repeatable and predictable. Mocking is required in the following cases:
+
+Whenever the module under test has dependencies that are not fully implemented. For example, if we have a module that calls a REST API that is still in progress, then to test our module, it is advised to mock the API call and perform unit testing of our module.
+Whenever the module under test updates the system states. For example, whenever the module involves database calls that creates or updates or delete data from the system, it is very much important to mock those objects.
+Even if we have DB calls that just retrieves the data, it is advised to mock those because of the risk of DB availability.
+...........................................................................
+36. What is Mockito? What are some of its advantages?
+Mockito is an open-source, Java-based, mocking framework that allows the creation of test objects that simulate the behaviour (mock) of real-world objects. This helps in achieving test-driven or behaviour-driven development. The framework allows developers to verify system behaviours without establishing expectations. Mockito framework attempts to eliminate expect-run-verify development patterns by removing external specifications and dependencies. Some of the advantages of Mockito are:
+
+Mocks are created at runtime, hence reordering method input parameters or renaming interface methods will not break test code.
+Mockito supports returning of values.
+It supports exception simulation
+It provides a check on the order of method calls.
+It helps in creating mock objects using annotation.
+........................................................................
+37. When and why should we use spy?
+Spy is a partial mock object supported by the Mockito framework. Following are the features of spy objects:
+
+Whenever mock is not set up, interaction on spy results in real method calls. Spy objects allow verifying interactions such as whether the method was called and how many times it was called, etc.
+They provide flexibility for setting up partial mocks. For instance, if an object has 2 methods, and we want one method to be mocked and the other to be called actually, then we can use spies.
+The main difference between mock and spy is that in mock, we create a complete fake object whereas, in spy, we have a hybrid of a real object and fake/stubbed methods.
+.......................................................................
+39. What is the main difference between @Mock and @InjectMocks?
+@Mock annotation is used for creating mocks whereas @InjectMocks is used for creating class objects. Whenever the actual method body has to be executed of a given class, then we can use @InjectMocks.
+......................................................................
+40. Why can’t we mock static methods in Mockito?
+Static methods belong to the class and not to any objects which means that all instances of the class use the same static method. They are more like procedural code and are used in legacy systems. Mock libraries create mocks at runtime utilizing dynamic instance creation using interfaces or inheritance. Since static methods are not linked with any instance, it is not possible to mock them using Mockito. However, we have frameworks like PowerMock that supports static methods.
+.............................................................................
